@@ -1,0 +1,48 @@
+<!--基础元素-->
+<template name="WxTextView">
+  <view class="wxParse-inline">
+    <block wx:for="{{item.textArray}}" wx:key="">
+      <block class="{{item.text == '\\n' ? 'wxParse-hide':''}}" wx:if="{{item.node == 'text'}}">{{item.text}}</block>
+    </block>
+  </view>
+</template>
+
+<!--入口模版-->
+<template name="wxParse">
+  <block wx:for="{{wxParseData}}" wx:key="">
+    <template is="wxParse0" data="{{item}}"/>
+  </block>
+</template>
+
+<template name="wxParse0">
+  <!--<template is="wxParse1" data="{{item}}" />-->
+  <!--判断是否是标签节点-->
+  <block wx:if="{{item.node == 'element'}}">
+    <!--内联标签-->
+    <view class="{{item.classStr}} wxParse-{{item.tag}} wxParse-{{item.tagType}}" style="{{item.styleStr}}">
+      <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
+        <template is="wxParse1" data="{{item}}"/>
+      </block>
+    </view>
+
+  </block>
+
+  <!--判断是否是文本节点-->
+  <block wx:elif="{{item.node == 'text'}}">
+    <!--如果是，直接进行-->
+    <template is="WxTextView" data="{{item}}"/>
+  </block>
+</template>
+
+<template name="wxParse1">
+  <block>
+    <view class="wxParse-inline">
+      <block wx:for="{{item.textArray}}" wx:for-index="idx" wx:key="{{idx}}">
+        <block class="{{item.text == '\\n' ? 'wxParse-hide':''}}" wx:if="{{item.node == 'text'}}">
+          <view bindtap="showDict" data-word="{{item.text}}" class="wxParse-inline">{{item.text}}</view>
+        </block>
+      </block>
+    </view>
+  </block>
+</template>
+

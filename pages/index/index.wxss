@@ -1,0 +1,78 @@
+/**index.wxss**/
+
+.activity {
+  width: 750rpx;
+  height: 375rpx;
+}
+
+.activity image {
+  width: 750rpx;
+  height: 375rpx;
+}
+
+.container {
+  height: 1500rpx;
+}
+.video-item .video-avatar {
+  width: 200rpx;
+  height: 150rpx;
+}
+
+.row {
+  margin: 15rpx 10rpx 5rpx 10rpx;
+  padding: 20rpx 10rpx 5rpx 10rpx;
+  clear: both;
+  box-shadow: 0 3px 8px -4px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  height: 170rpx;
+}
+
+.video-title {
+  font-size: 13px;
+  color: #525252;
+}
+
+.video-title-div {
+  height: 58px;
+  overflow: hidden;
+  margin-top: -7px;
+}
+
+.col-3, .col-6 {
+  float: left;
+  overflow: hidden;
+}
+
+.col-3 {
+  width: 210rpx;
+}
+
+.col-6 {
+  width: 500rpx;
+}
+
+.level-label {
+  color: white;
+  font-size: 13px;
+  padding: 1px 3px;
+}
+
+.level-label.beginner {
+  background-color: #4fe5cc;
+}
+
+.level-label.intermediate {
+  background-color: #e8c060;
+}
+
+.level-label.advanced {
+  background-color: #ea9078;
+}
+
+.duration {
+  font-size: 12px;
+  color: #525252;
+  margin-top: 10px;
+  padding-right: 10px;
+  float: right;
+}

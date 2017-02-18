@@ -1,0 +1,57 @@
+<import src="../../wxParse/wxParse.wxml"/>
+
+<view class="main-container">
+  <view class="video-player-container">
+    <video id="mainVideo" src="{{video.video_url}}" controls autoplay="true" class="video-player"></video>
+    <view class="tab">
+      <view class="tab-item flex-item {{currentNavtab==index ? 'active' : ''}}" wx:for="{{navTab}}" wx:key="{{index}}"
+            bindtap="switchTab"
+            data-idx="{{index}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <view class="sub-scroll" hidden="{{currentNavtab==0 ? '' : true}}">
+    <scroll-view scroll-y="true">
+      <block wx:for="{{frs}}" wx:key="{{index}}">
+        <view class="video-sub">
+          <view class="tr">
+            <view bindtap="seekTo" data-to="{{points[index]}}" class="play-btn {{currentIndex ? 'active' : ''}}"></view>
+
+            <view class="td">
+              <view class="sub">
+                <template is="wxParse" data="{{wxParseData:item}}"/>
+              </view>
+              <view class="zh-sub">{{zhs[index]}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="description" hidden="{{currentNavtab==1 ? '' : true}}">
+    <scroll-view scroll-y="true">
+      <template is="wxParse" data="{{wxParseData:description.nodes}}"/>
+    </scroll-view>
+  </view>
+
+  <view class="ctnt3 placehold" hidden="{{currentNavtab==2 ? '' : true}}">
+    <text>评论</text>
+  </view>
+
+  <view hidden="{{!show}}" class="dict">
+    <view class="dict-header">
+      <text>{{word}}</text>
+      <view bindtap="playAudio" class="inline audio-btn" v-if="{{prononce != ''}}"></view>
+      <view bindtap="closeDict" class="inline close-btn">x</view>
+    </view>
+
+    <scroll-view scroll-y="true" class="dict-body">
+      <template is="wxParse" data="{{wxParseData:explication.nodes}}"/>
+    </scroll-view>
+
+    <audio src='{{prononce}}' action="{{action}}" hidden="true"/>
+  </view>
+</view>

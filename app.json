@@ -1,0 +1,30 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/video/video"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#4FE5CC",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"light"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#268dcd",
+    "borderStyle": "white",
+    "backgroundColor": "#fafafa",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "images/ing.png",
+      "selectedIconPath": "images/ing-active.png",
+      "text": "正在热映"
+    },{
+      "pagePath": "pages/logs/logs",
+      "iconPath": "images/coming.png",
+      "selectedIconPath": "images/coming-active.png",
+      "text": "即将上映"
+    }]
+  }
+}
